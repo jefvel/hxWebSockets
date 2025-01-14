@@ -76,7 +76,11 @@ class WebSocketServer
                     break;
                 }
 
-                Sys.sleep(sleepAmount);
+                if (handlers.length == 0) {
+                    Sys.sleep(1.0);
+                } else {
+                    Sys.sleep(sleepAmount);
+                }
             }
         });
         
