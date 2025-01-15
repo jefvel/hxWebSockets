@@ -144,10 +144,13 @@ class WebSocketCommon {
 
     public function close() {
         if (state != State.Closed) {
+            state = State.Closed;
             try {
                 Log.debug("Closed", id);
                 sendFrame(Bytes.alloc(0), OpCode.Close);
-                state = State.Closed;
+            } catch (e:Dynamic) { }
+
+            try {
                 _socket.close();
             } catch (e:Dynamic) { }
 
