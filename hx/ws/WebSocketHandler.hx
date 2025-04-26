@@ -47,20 +47,17 @@ class WebSocketHandler extends Handler {
 			httpResponse.headers.set(HttpHeader.CONNECTION, "close");
 			httpResponse.headers.set(HttpHeader.X_WEBSOCKET_REJECT_REASON, 'Bad request');
 		} else if (httpRequest.headers.get(HttpHeader.SEC_WEBSOSCKET_VERSION) != "13") {
-			trace('1 ${httpRequest.headers.get(HttpHeader.SEC_WEBSOSCKET_VERSION)}');
 			httpResponse.code = 426;
 			httpResponse.text = "Upgrade";
 			httpResponse.headers.set(HttpHeader.CONNECTION, "close");
 			httpResponse.headers.set(HttpHeader.X_WEBSOCKET_REJECT_REASON,
 				'Unsupported websocket client version: ${httpRequest.headers.get(HttpHeader.SEC_WEBSOSCKET_VERSION)}, Only version 13 is supported.');
 		} else if (httpRequest.headers.get(HttpHeader.UPGRADE) != "websocket") {
-			trace('2 ${httpRequest.headers.get(HttpHeader.UPGRADE)}');
 			httpResponse.code = 426;
 			httpResponse.text = "Upgrade";
 			httpResponse.headers.set(HttpHeader.CONNECTION, "close");
 			httpResponse.headers.set(HttpHeader.X_WEBSOCKET_REJECT_REASON, 'Unsupported upgrade header: ${httpRequest.headers.get(HttpHeader.UPGRADE)}.');
-		} else if (httpRequest.headers.get(HttpHeader.CONNECTION).indexOf("Upgrade") == -1) {
-			trace('3 ${httpRequest.headers.get(HttpHeader.CONNECTION).indexOf("Upgrade")}');
+		} else if (httpRequest.headers.get(HttpHeader.CONNECTION).toLowerCase().indexOf("upgrade") == -1) {
 			httpResponse.code = 426;
 			httpResponse.text = "Upgrade";
 			httpResponse.headers.set(HttpHeader.CONNECTION, "close");
