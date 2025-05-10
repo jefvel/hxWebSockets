@@ -47,8 +47,11 @@ class WebSocket { // lets use composition so we can intercept send / onmessage a
     }
 
     private function createSocket() {
-        var protocols = _protocols != null ? _protocols : js.Lib.undefined;
-        return new js.html.WebSocket(_url, _protocols);
+        if (_protocols != null) {
+            return new js.html.WebSocket(_url, _protocols);
+        } else {
+            return new js.html.WebSocket(_url);
+        }
     }
 
     public function open() {
