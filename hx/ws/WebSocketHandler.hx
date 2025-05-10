@@ -40,7 +40,6 @@ class WebSocketHandler extends Handler {
 		var httpResponse = new HttpResponse();
 
 		httpResponse.headers.set(HttpHeader.SEC_WEBSOSCKET_VERSION, "13");
-		trace(httpRequest.headers);
 		if (httpRequest.method != "GET" || httpRequest.httpVersion != "HTTP/1.1") {
 			httpResponse.code = 400;
 			httpResponse.text = "Bad";

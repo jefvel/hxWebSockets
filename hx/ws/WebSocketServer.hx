@@ -77,7 +77,7 @@ class WebSocketServer
                 }
 
                 if (handlers.length == 0) {
-                    Sys.sleep(1.0);
+                    Sys.sleep(0.1);
                 } else {
                     Sys.sleep(sleepAmount);
                 }
