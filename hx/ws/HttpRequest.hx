@@ -6,6 +6,8 @@ class HttpRequest {
     public var httpVersion:String = null;
 
     public var headers:Map<String, String> = new Map<String, String>();
+    
+    public var requestBodyString: String = null;
 
     public function new() {
     }

@@ -87,7 +87,7 @@ class WebSocketHandler extends Handler {
 		}
 
 		if (validateHandshake != null) {
-			validateHandshake(httpRequest, httpResponse, callback);
+			validateHandshake(this, httpRequest, httpResponse, callback);
 		} else {
 			callback(httpResponse);
 		}
