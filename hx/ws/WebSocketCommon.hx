@@ -327,6 +327,11 @@ class WebSocketCommon {
             }
             httpRequest.addLine(line);
         }
+        
+        var body = _buffer.readAllAvailableBytes();
+        if (body.length > 0) {
+            httpRequest.requestBodyString = body.toString();
+        }
 
         Log.data(httpRequest.toString(), id);
 
